@@ -1,0 +1,30 @@
+{
+    "name": "dannyvandersluijs/exact-online-api-client-dev-tools",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Danny van der Sluijs",
+            "email": "danny.vandersluijs@icloud.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "dannyvandersluijs/exact-online-meta-data-tool": "dev-master",
+        "symfony/console": "^4.3",
+        "symfony/filesystem": "^4.3",
+        "twig/twig": "^2.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "DevTools\\": "DevTools/"
+        }
+    },
+    "repositories":[
+        {
+            "type": "vcs",
+            "url": "git@github.com:DannyvdSluijs/exact-online-meta-data-tool"
+        }
+    ]
+}
