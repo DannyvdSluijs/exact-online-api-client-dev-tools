@@ -3,6 +3,7 @@
 namespace DevTools;
 
 use MetaDataTool\ValueObjects\Endpoint;
+use MetaDataTool\ValueObjects\Property;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -13,6 +14,7 @@ class TwigExtension extends AbstractExtension
         return [
             new TwigFilter('namespace', [$this, 'namespace']),
             new TwigFilter('className', [$this, 'className']),
+            new TwigFilter('derivePropertyType', [$this, 'derivePropertyType']),
         ];
     }
 
@@ -29,4 +31,20 @@ class TwigExtension extends AbstractExtension
 
         return ucfirst(array_pop($elements));
     }
+
+    public function derivePropertyType(Property $property): string
+    {
+        switch ($property->getType()) {
+            case 'Edm.Guid':
+            case 'Edm.String':
+            case 'Edm.DateTime':
+                return 'string';
+            case 'Edm.Int32':
+            case 'Edm.Int16':
+                return 'int';
+            default:
+                return $property->getType();
+        }
+    }
+
 }

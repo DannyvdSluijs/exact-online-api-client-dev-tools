@@ -4,5 +4,20 @@ namespace {{ endpoint|namespace }};
 
 class {{ endpoint|className }} extends Entity
 {
+{% for property in endpoint.properties %}
+    /** @var {{property|derivePropertyType }} */
+    private ${{property.name }};
+{% endfor %}
+{% for property in endpoint.properties %}
 
+    public function set{{property.name }}({{property|derivePropertyType }} ${{property.name }}): void
+    {
+        $this->{{property.name }} = ${{property.name }};
+    }
+
+    public function get{{property.name }}(): {{property|derivePropertyType }}
+    {
+        return $this->{{property.name }};
+    }
+{% endfor %}
 }
