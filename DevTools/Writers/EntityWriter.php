@@ -44,7 +44,6 @@ class EntityWriter
 
 
             $this->filesystem->dumpFile($filename, $content);
-
         }
     }
 

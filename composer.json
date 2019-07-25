@@ -26,5 +26,16 @@
             "type": "vcs",
             "url": "git@github.com:DannyvdSluijs/exact-online-meta-data-tool"
         }
-    ]
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "scripts": {
+        "phpcs": [
+            "./vendor/bin/phpcs --standard=PSR2 DevTools template application.php"
+        ],
+        "phpcbf": [
+            "./vendor/bin/phpcbf --standard=PSR2 DevTools template application.php"
+        ]
+    }
 }
