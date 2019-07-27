@@ -36,12 +36,6 @@ class EntityWriter
             $filename = $this->basePath . $path . '.php';
             $this->filesystem->mkdir(dirname($filename));
 
-//
-//            $uri = str_replace(['/api/v1/{division}', '/api/v1/current', '/'], ['', '', '\\'], $endpoint->getUri());
-//            var_dump($uri);
-//            $pos = strripos($uri, '\\');
-//            return;
-
             $content = $this->buildContent($endpoint);
 
 

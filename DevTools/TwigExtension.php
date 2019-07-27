@@ -27,7 +27,7 @@ class TwigExtension extends AbstractExtension
     public function namespace(Endpoint $endpoint): string
     {
         $uri = str_replace(['/api/v1/{division}', '/api/v1/current', '/'], ['', '', '\\'], $endpoint->getUri());
-        $pos = strripos($uri, '\\');
+        $pos = strrpos($uri, '\\');
         return 'ExactOnline\ApiClient\Entity' . ucwords(substr($uri, 0, $pos), '\\');
     }
 
