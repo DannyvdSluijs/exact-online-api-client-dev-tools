@@ -12,9 +12,15 @@ class TwigExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('namespace', [$this, 'namespace']),
-            new TwigFilter('className', [$this, 'className']),
-            new TwigFilter('derivePropertyType', [$this, 'derivePropertyType']),
+            new TwigFilter('namespace', function (Endpoint $endpoint) : string {
+                return $this->namespace($endpoint);
+            }),
+            new TwigFilter('className', function (Endpoint $endpoint) : string {
+                return $this->className($endpoint);
+            }),
+            new TwigFilter('derivePropertyType', function (Property $property) : string {
+                return $this->derivePropertyType($property);
+            }),
         ];
     }
 

@@ -14,6 +14,8 @@ class EntityWriter
     private $basePath;
     /** @var Filesystem */
     private $filesystem;
+    /** @var Environment */
+    private $templateEngine;
 
     public function __construct(
         string $basePath,

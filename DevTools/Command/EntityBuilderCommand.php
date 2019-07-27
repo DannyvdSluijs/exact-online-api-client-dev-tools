@@ -20,11 +20,12 @@ class EntityBuilderCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('') /* @todo */
+            ->setDescription('Build all the entities based on the Exact Online API documentation')
             ->setHelp(<<<'HELP'
-                /* @todo */
+                This command scans the Exact Online API documentation and builds the entities based on the 
+                meta data discovered.
 HELP
-            ); /* @todo */
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
