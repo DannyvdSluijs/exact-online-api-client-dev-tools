@@ -44,10 +44,17 @@ class TwigExtension extends AbstractExtension
             case 'Edm.Guid':
             case 'Edm.String':
             case 'Edm.DateTime':
+            case 'Edm.Binary':
                 return 'string';
+            case 'Edm.Int64':
             case 'Edm.Int32':
             case 'Edm.Int16':
+            case 'Edm.Byte':
                 return 'int';
+            case 'Edm.Double':
+                return 'float';
+            case 'Edm.Boolean':
+                return 'bool';
             default:
                 return $property->getType();
         }

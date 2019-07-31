@@ -2,6 +2,8 @@
 
 namespace {{ endpoint|namespace }};
 
+use ExactOnline\ApiClient\Entity\Entity;
+
 class {{ endpoint|className }} extends Entity
 {
 {% for property in endpoint.properties %}
