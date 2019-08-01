@@ -39,7 +39,7 @@ HELP
         $twig = new Environment(new FilesystemLoader('./template/'));
         $twig->addExtension(new TwigExtension());
         $writer = new EntityWriter(
-            $input->getOption('destination'),
+            $this->getFullDestinationPath($input->getOption('destination')),
             new Filesystem(),
             $twig
         );
@@ -48,4 +48,14 @@ HELP
 
         return 0;
     }
+
+    private function getFullDestinationPath(string $destination): string
+    {
+        if (strpos($destination, DIRECTORY_SEPARATOR) === 0) {
+            return $destination;
+        }
+
+        return getcwd() . DIRECTORY_SEPARATOR . $destination;
+    }
+
 }

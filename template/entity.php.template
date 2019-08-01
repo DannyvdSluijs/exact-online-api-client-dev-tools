@@ -7,19 +7,19 @@ use ExactOnline\ApiClient\Entity\Entity;
 class {{ endpoint|className }} extends Entity
 {
 {% for property in endpoint.properties %}
-    /** @var {{property|derivePropertyType }} */
-    private ${{property.name }};
+    /** @var {{ property|derivePropertyType }}|null */
+    private ${{ property|derivePropertyName }};
 {% endfor %}
 {% for property in endpoint.properties %}
 
-    public function set{{property.name }}({{property|derivePropertyType }} ${{property.name }}): void
+    public function set{{ property.name }}(?{{ property|derivePropertyType }} ${{ property|derivePropertyName }}): void
     {
-        $this->{{property.name }} = ${{property.name }};
+        $this->{{ property|derivePropertyName }} = ${{ property|derivePropertyName }};
     }
 
-    public function get{{property.name }}(): {{property|derivePropertyType }}
+    public function get{{property.name }}(): ?{{ property|derivePropertyType }}
     {
-        return $this->{{property.name }};
+        return $this->{{ property|derivePropertyName }};
     }
 {% endfor %}
 }

@@ -21,6 +21,9 @@ class TwigExtension extends AbstractExtension
             new TwigFilter('derivePropertyType', function (Property $property) : string {
                 return $this->derivePropertyType($property);
             }),
+            new TwigFilter('derivePropertyName', function (Property $property) : string {
+                return $this->derivePropertyName($property);
+            }),
         ];
     }
 
@@ -60,4 +63,12 @@ class TwigExtension extends AbstractExtension
         }
     }
 
+    public function derivePropertyName(Property $property): string
+    {
+        if ($property->getName() === 'ID') {
+            return 'id';
+        }
+
+        return lcfirst($property->getName());
+    }
 }
