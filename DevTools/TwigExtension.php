@@ -43,6 +43,10 @@ class TwigExtension extends AbstractExtension
 
     public function derivePropertyType(Property $property): string
     {
+        if ($this->propertyIsApiEntity($property)) {
+            return $this->mapPropertyTypeToApiEntityClassName($property);
+        }
+
         switch ($property->getType()) {
             case 'Edm.Guid':
             case 'Edm.String':
@@ -70,5 +74,17 @@ class TwigExtension extends AbstractExtension
         }
 
         return lcfirst($property->getName());
+    }
+
+    private function propertyIsApiEntity(Property $property): bool
+    {
+        return strpos($property->getType(), 'Exact.Web.Api.Models.') === 0;
+    }
+
+    private function mapPropertyTypeToApiEntityClassName(Property $property)
+    {
+        $propertyType = ltrim($property->getType(), 'Exact.Web.Api.Models.');
+        $propertyType = str_replace('.', '\\', $propertyType);
+        return '\ExactOnline\ApiClient\Entity\\' . $propertyType;
     }
 }
