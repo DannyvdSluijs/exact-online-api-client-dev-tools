@@ -1,0 +1,25 @@
+<?php declare(strict_types=1);
+
+namespace {{ endpoint|namespace }};
+
+use ExactOnline\ApiClient\Entity\Entity;
+
+class {{ endpoint|className }} extends Entity
+{
+{% for property in endpoint.properties %}
+    /** @var {{ property|derivePropertyType }}|null */
+    private ${{ property|derivePropertyName }};
+{% endfor %}
+{% for property in endpoint.properties %}
+
+    public function set{{ property.name }}(?{{ property|derivePropertyType }} ${{ property|derivePropertyName }}): void
+    {
+        $this->{{ property|derivePropertyName }} = ${{ property|derivePropertyName }};
+    }
+
+    public function get{{property.name }}(): ?{{ property|derivePropertyType }}
+    {
+        return $this->{{ property|derivePropertyName }};
+    }
+{% endfor %}
+}

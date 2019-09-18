@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+use DevTools\Command\EntityBuilderCommand;
+use Symfony\Component\Console\Application;
+
+if (PHP_SAPI !== 'cli') {
+    die('Warning: WsdlToClass should be invoked via the CLI version of PHP, not the ' . PHP_SAPI . ' SAPI' . PHP_EOL);
+}
+
+/**
+ * This makes our life easier when dealing with paths. Everything is relative
+ * to the application root now.
+ */
+chdir(__DIR__);
+
+
+$autoLoaderFiles = ['vendor/autoload.php', '../autoload.php', '../../autoload.php'];
+foreach ($autoLoaderFiles as $autoLoaderFile) {
+    if (is_readable($autoLoaderFile)) {
+        $loader = include $autoLoaderFile;
+        break;
+    }
+}
+
+if (!$loader) {
+    die('You must set up the project dependencies.');
+}
+
+$application = new Application();
+$application->add(new EntityBuilderCommand());
+$application->run();
