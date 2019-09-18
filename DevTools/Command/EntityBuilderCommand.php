@@ -15,7 +15,7 @@ use Twig\Loader\FilesystemLoader;
 
 class EntityBuilderCommand extends Command
 {
-    protected static $defaultName = 'run';
+    protected static $defaultName = 'build-entities';
 
     protected function configure(): void
     {

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c0086aeefcc331cae6955e941c55d60",
+    "content-hash": "4cbc3e9179c0442b3b71ec5ebdf8a794",
     "packages": [
         {
             "name": "dannyvandersluijs/exact-online-meta-data-tool",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:DannyvdSluijs/exact-online-meta-data-tool.git",
-                "reference": "e96e475018edb62a1c46e9427dc46a8d41877033"
+                "reference": "356daac1e171d13979339d668f2cdeb394bc87ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DannyvdSluijs/exact-online-meta-data-tool/zipball/e96e475018edb62a1c46e9427dc46a8d41877033",
-                "reference": "e96e475018edb62a1c46e9427dc46a8d41877033",
+                "url": "https://api.github.com/repos/DannyvdSluijs/exact-online-meta-data-tool/zipball/356daac1e171d13979339d668f2cdeb394bc87ac",
+                "reference": "356daac1e171d13979339d668f2cdeb394bc87ac",
                 "shasum": ""
             },
             "require": {
@@ -49,10 +49,10 @@
             ],
             "description": "A meta data tool for the ExactOnline API documentation",
             "support": {
-                "source": "https://github.com/DannyvdSluijs/exact-online-meta-data-tool/tree/master",
+                "source": "https://github.com/DannyvdSluijs/exact-online-meta-data-tool/tree/1.0.0",
                 "issues": "https://github.com/DannyvdSluijs/exact-online-meta-data-tool/issues"
             },
-            "time": "2019-07-14T18:00:31+00:00"
+            "time": "2019-09-18T19:16:53+00:00"
         },
         {
             "name": "myclabs/php-enum",
@@ -2714,9 +2714,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "dannyvandersluijs/exact-online-meta-data-tool": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
