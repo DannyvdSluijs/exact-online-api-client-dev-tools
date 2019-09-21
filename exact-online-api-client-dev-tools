@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
-use DevTools\Command\EntityBuilderCommand;
+use DevTools\Command;
 use Symfony\Component\Console\Application;
 
 if (PHP_SAPI !== 'cli') {
@@ -28,5 +28,6 @@ if (!$loader) {
 }
 
 $application = new Application();
-$application->add(new EntityBuilderCommand());
+$application->add(new Command\EntityBuilderCommand());
+$application->add(new Command\AuthorisationSetupCommand());
 $application->run();
