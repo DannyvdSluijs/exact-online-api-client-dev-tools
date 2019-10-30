@@ -34,12 +34,10 @@
         "rector/rector": "^0.5.8"
     },
     "scripts": {
-        "phpcs": [
-            "./vendor/bin/phpcs --standard=PSR2 DevTools template application.php"
-        ],
-        "phpcbf": [
-            "./vendor/bin/phpcbf --standard=PSR2 DevTools template application.php"
-        ]
+        "phpcs": ["./vendor/bin/phpcs --standard=PSR2 DevTools template application.php"],
+        "phpcbf": ["./vendor/bin/phpcbf --standard=PSR2 DevTools template application.php"],
+        "phpstan": "./vendor/bin/phpstan analyse",
+        "build-entities": ["./exact-online-api-client-dev-tools build-entities --destination entities"]
     },
     "bin": [
         "exact-online-api-client-dev-tools"

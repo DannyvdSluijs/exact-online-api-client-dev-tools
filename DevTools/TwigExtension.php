@@ -24,6 +24,9 @@ class TwigExtension extends AbstractExtension
             new TwigFilter('derivePropertyName', function (Property $property) : string {
                 return $this->derivePropertyName($property);
             }),
+            new TwigFilter('deriveEndpointUri', function (Endpoint $endpoint) : string {
+                return $this->deriveEndpointUri($endpoint);
+            }),
         ];
     }
 
@@ -76,12 +79,17 @@ class TwigExtension extends AbstractExtension
         return lcfirst($property->getName());
     }
 
+    public function deriveEndpointUri(Endpoint $endpoint): string
+    {
+        return ltrim($endpoint->getUri(), '/api/v1/{division}');
+    }
+
     private function propertyIsApiEntity(Property $property): bool
     {
         return strpos($property->getType(), 'Exact.Web.Api.Models.') === 0;
     }
 
-    private function mapPropertyTypeToApiEntityClassName(Property $property)
+    private function mapPropertyTypeToApiEntityClassName(Property $property): string
     {
         $propertyType = ltrim($property->getType(), 'Exact.Web.Api.Models.');
         $propertyType = str_replace('.', '\\', $propertyType);
