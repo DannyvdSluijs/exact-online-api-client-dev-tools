@@ -22,4 +22,9 @@ class {{ endpoint|className }} extends Entity
         return $this->{{ property|derivePropertyName }};
     }
 {% endfor %}
+
+    public static function getApiEndpoint(): string
+    {
+        return '{{ endpoint|deriveEndpointUri }}';
+    }
 }

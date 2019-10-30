@@ -2,6 +2,7 @@
 
 namespace DevTools\Command;
 
+use DevTools\ValueObjects\OAuthClient;
 use DevTools\ValueObjects\OAuthTokenSet;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
@@ -59,11 +60,10 @@ HELP
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->checkRedirectUriValue();
-        $clientId = $this->askClientId();
-        $clientSecret = $this->askClientSecret();
-        $authorisationCode = $this->getAuthorisationCode($clientId);
-        $tokenSet = $this->fetchTokens($clientId, $clientSecret, $authorisationCode);
-        $this->writeTokenSetToFile($tokenSet);
+        $client = $this->askClientDetails();
+        $authorisationCode = $this->getAuthorisationCode($client);
+        $tokenSet = $this->fetchTokens($client, $authorisationCode);
+        $this->writeToFile($client, $tokenSet);
 
         return 0;
     }
@@ -78,24 +78,29 @@ HELP
         }
     }
 
-    private function askClientId(): string
+    private function askClientDetails(): OAuthClient
     {
-        $question = new Question('What is the Client ID (Can be found in the Exact App Center)? ');
-        return $this->questionHelper->ask($this->input, $this->output, $question);
+        $clientId = $this->questionHelper->ask(
+            $this->input,
+            $this->output,
+            new Question('What is the Client ID (Can be found in the Exact App Center)? ')
+        );
+
+        $clientSecret = $this->questionHelper->ask(
+            $this->input,
+            $this->output,
+            new Question('What is the Client secret (Can be found in the Exact App Center)? ')
+        );
+
+        return new OAuthClient($clientId, $clientSecret);
     }
 
-    private function askClientSecret(): string
-    {
-        $question = new Question('What is the Client secret (Can be found in the Exact App Center)? ');
-        return $this->questionHelper->ask($this->input, $this->output, $question);
-    }
-
-    private function getAuthorisationCode(string $clientId): string
+    private function getAuthorisationCode(OAuthClient $client): string
     {
         $this->startHttpListening();
 
         $url = self::$baseUrl . self::$authUrl . '?' . http_build_query([
-            'client_id' => $clientId,
+            'client_id' => $client->getId(),
             'redirect_uri' => self::$redirectUri,
             'response_type' => 'code'
         ]);
@@ -115,7 +120,7 @@ HELP
                 $i++;
             } else {
                 $code = file_get_contents($filename);
-                if ($code === null) {
+                if ($code === false) {
                     $this->output->writeln('Unable to read code from file, halting!');
                     $this->stopHttpListening();
                     exit(1);
@@ -143,7 +148,7 @@ HELP
         shell_exec(sprintf('kill %d 2>&1', $this->pid));
     }
 
-    private function fetchTokens(string $clientId, string $clientSecret, string $authorisationCode): OAuthTokenSet
+    private function fetchTokens(OAuthClient $client, string $authorisationCode): OAuthTokenSet
     {
         $this->output->writeln('Requesting access and refresh tokens.');
 
@@ -152,8 +157,8 @@ HELP
             'form_params' => [
                 'redirect_uri' => self::$redirectUri,
                 'grant_type' => 'authorization_code',
-                'client_id' => $clientId,
-                'client_secret' => $clientSecret,
+                'client_id' => $client->getId(),
+                'client_secret' => $client->getSecret(),
                 'code' => $authorisationCode
             ]
         ];
@@ -177,12 +182,18 @@ HELP
         return getcwd() . DIRECTORY_SEPARATOR . $destination;
     }
 
-    private function writeTokenSetToFile(OAuthTokenSet $tokenSet): void
+    private function writeToFile(OAuthClient $client, OAuthTokenSet $tokenSet): void
     {
-        $path = $this->getFullDestinationPath($this->input->getOption('output'));
+        $output = $this->input->getOption('output');
+
+        if (! is_string($output)) {
+            throw new \InvalidArgumentException('Output parameter should be a string');
+        }
+
+        $path = $this->getFullDestinationPath($output);
         $fileName = $path . DIRECTORY_SEPARATOR . 'oauth.json';
 
-        file_put_contents($fileName, json_encode($tokenSet, JSON_PRETTY_PRINT));
+        file_put_contents($fileName, json_encode(array_merge($client->jsonSerialize(), $tokenSet->jsonSerialize()), JSON_PRETTY_PRINT));
 
         $this->output->writeln('Access and refresh tokens are available in: ' . $fileName);
     }
