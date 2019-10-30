@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2019-10-30
+### Added
+- Add static method to fetch the endpoint URI
+### Changed
+- Improve Authorisation setup command
+- Correct PHPStan discovered errors
+
 ## [1.1.1] - 2109-09-22
 ### Fixed
 - Corrected paths and dependencies required when used as dependency
