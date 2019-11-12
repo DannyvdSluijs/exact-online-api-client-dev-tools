@@ -28,5 +28,6 @@ if (!$loader) {
 
 $application = new Application();
 $application->add(new Command\EntityBuilderCommand());
+$application->add(new Command\MetaFileBuilderCommand());
 $application->add(new Command\AuthorisationSetupCommand());
 $application->run();
