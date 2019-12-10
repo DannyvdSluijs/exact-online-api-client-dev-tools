@@ -45,11 +45,6 @@ class EntityWriter
 
     private function buildContent(Endpoint $endpoint): string
     {
-        return $this->templateEngine->render(
-            'entity.php.template',
-            [
-                'endpoint' => $endpoint
-            ]
-        );
+        return $this->templateEngine->render('entity.php.template', ['endpoint' => $endpoint]);
     }
 }
