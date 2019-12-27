@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace DevTools\Command;
 
@@ -50,8 +52,12 @@ HELP
 
         $twig = new Environment(new FilesystemLoader('./template/'));
         $twig->addExtension(new TwigExtension());
+
+        /** @var string $destination */
+        $destination = $input->getOption('destination');
+
         $writer = new EntityWriter(
-            $this->getFullDestinationPath($input->getOption('destination')),
+            $this->getFullDestinationPath($destination),
             new Filesystem(),
             $twig
         );
@@ -78,7 +84,11 @@ HELP
 
     private function loadEndpoints(): EndpointCollection
     {
-        $object = json_decode(file_get_contents('meta-data.json'));
+        $contents = file_get_contents('meta-data.json');
+        if ($contents === false) {
+            throw new \RuntimeException('Unable to read from meta-data.json');
+        }
+        $object = json_decode($contents, false);
         $endpointCollection = new EndpointCollection();
 
         foreach ($object as $endpoint) {
@@ -105,5 +115,4 @@ HELP
 
         return $endpointCollection;
     }
-
 }

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace DevTools\Command;
 
@@ -45,7 +47,13 @@ class AuthorisationSetupCommand extends Command
 HELP
             )
             ->setDefinition([
-                new InputOption('output', 'o', InputOption::VALUE_REQUIRED, 'The output directory for the tokens', getcwd()),
+                new InputOption(
+                    'output',
+                    'o',
+                    InputOption::VALUE_REQUIRED,
+                    'The output directory for tokens',
+                    getcwd()
+                ),
             ]);
     }
 
@@ -134,6 +142,10 @@ HELP
         $this->stopHttpListening();
         unlink($filename);
 
+        if ($code === null) {
+            throw new \RuntimeException('Unable to retrieve the authorisation code');
+        }
+
         return $code;
     }
 
@@ -193,7 +205,8 @@ HELP
         $path = $this->getFullDestinationPath($output);
         $fileName = $path . DIRECTORY_SEPARATOR . 'oauth.json';
 
-        file_put_contents($fileName, json_encode(array_merge($client->jsonSerialize(), $tokenSet->jsonSerialize()), JSON_PRETTY_PRINT));
+        $data = array_merge($client->jsonSerialize(), $tokenSet->jsonSerialize());
+        file_put_contents($fileName, json_encode($data, JSON_PRETTY_PRINT));
 
         $this->output->writeln('Access and refresh tokens are available in: ' . $fileName);
     }

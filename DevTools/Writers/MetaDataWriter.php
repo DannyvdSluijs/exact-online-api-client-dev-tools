@@ -1,7 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace DevTools\Writers;
 
+use DevTools\Exceptions\SerializationException;
 use DevTools\MetaDataHelper;
 use MetaDataTool\ValueObjects\Endpoint;
 use MetaDataTool\ValueObjects\EndpointCollection;
@@ -35,7 +38,10 @@ class MetaDataWriter
         $content = json_encode($metaData, JSON_PRETTY_PRINT);
         $filename = $this->basePath . '/meta-data.json';
 
+        if ($content === false) {
+            throw SerializationException::jsonEncodingFailed();
+        }
+
         $this->filesystem->dumpFile($filename, $content);
     }
-
 }
