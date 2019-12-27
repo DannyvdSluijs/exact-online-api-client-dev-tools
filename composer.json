@@ -25,6 +25,11 @@
             "DevTools\\": "DevTools/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "DevTools\\Tests\\": "tests/"
+        }
+    },
     "repositories":[
         {
             "type": "vcs",
@@ -33,12 +38,15 @@
     ],
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.4",
-        "rector/rector": "^0.5.8"
+        "rector/rector": "^0.5.8",
+        "phpunit/phpunit": "^8.5",
+        "fzaninotto/faker": "^1.9"
     },
     "scripts": {
         "phpcs": ["./vendor/bin/phpcs --standard=PSR12 DevTools template exact-online-api-client-dev-tools"],
         "phpcbf": ["./vendor/bin/phpcbf --standard=PSR12 DevTools template exact-online-api-client-dev-tools"],
         "phpstan": "./vendor/bin/phpstan analyse",
+        "phpunit": "./vendor/bin/phpunit",
         "build-entities": ["./exact-online-api-client-dev-tools build-entities --destination entities"],
         "build-meta-data": ["./exact-online-api-client-dev-tools build-meta-file"]
     },
