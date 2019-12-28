@@ -16,7 +16,7 @@
         "dannyvandersluijs/exact-online-meta-data-tool": "^1.0",
         "symfony/console": "^4.3",
         "symfony/filesystem": "^4.3",
-        "twig/twig": "^2.11",
+        "twig/twig": "^3.0",
         "guzzlehttp/guzzle": "^6.3",
         "symfony/http-foundation": "^4.3"
     },
