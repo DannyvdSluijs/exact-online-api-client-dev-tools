@@ -7,6 +7,9 @@ use DevTools\ValueObjects\OAuthClient;
 
 class OAuthClientTest extends TestCase
 {
+    /**
+     * @covers \DevTools\ValueObjects\OAuthClient
+     */
     public function testValueObjectCanHoldProperties(): void
     {
         $client = new OAuthClient(
@@ -18,6 +21,9 @@ class OAuthClientTest extends TestCase
         self::assertEquals($secret, $client->getSecret());
     }
 
+    /**
+     * @covers \DevTools\ValueObjects\OAuthClient
+     */
     public function testValueObjectCanBeSerialized(): void
     {
         $client = new OAuthClient(
