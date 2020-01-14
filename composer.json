@@ -10,6 +10,11 @@
     ],
     "minimum-stability": "stable",
     "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "7.2.0"
+        }
+    },
     "require": {
         "php": "^7.2",
         "ext-json": "*",
