@@ -3179,16 +3179,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "v0.6.10",
+            "version": "v0.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "76a2fc5ec90dde90f16cbf5a843cab6a1fdcd59b"
+                "reference": "e12f266f549a08615bf5a5c2ee10662b269263d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/76a2fc5ec90dde90f16cbf5a843cab6a1fdcd59b",
-                "reference": "76a2fc5ec90dde90f16cbf5a843cab6a1fdcd59b",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/e12f266f549a08615bf5a5c2ee10662b269263d1",
+                "reference": "e12f266f549a08615bf5a5c2ee10662b269263d1",
                 "shasum": ""
             },
             "require": {
@@ -3262,6 +3262,7 @@
                     "Rector\\Nette\\": "packages/Nette/src",
                     "Rector\\NodeTypeResolver\\": "packages/NodeTypeResolver/src",
                     "Rector\\PHPStan\\": "packages/PHPStan/src",
+                    "Rector\\PHPStanStaticTypeMapper\\": "packages/PHPStanStaticTypeMapper/src",
                     "Rector\\PHPUnitSymfony\\": "packages/PHPUnitSymfony/src",
                     "Rector\\PHPUnit\\": "packages/PHPUnit/src",
                     "Rector\\PSR4\\": "packages/PSR4/src",
@@ -3328,7 +3329,7 @@
                 "instant refactoring",
                 "instant upgrades"
             ],
-            "time": "2020-01-12T22:41:49+00:00"
+            "time": "2020-01-17T15:49:58+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
