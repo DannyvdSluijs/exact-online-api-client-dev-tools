@@ -10,7 +10,14 @@
     ],
     "minimum-stability": "stable",
     "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "7.2.0"
+        }
+    },
     "require": {
+        "php": "^7.2",
+        "ext-json": "*",
         "dannyvandersluijs/exact-online-meta-data-tool": "^1.0",
         "symfony/console": "^4.3",
         "symfony/filesystem": "^4.3",
@@ -23,6 +30,11 @@
             "DevTools\\": "DevTools/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "DevTools\\Tests\\": "tests/"
+        }
+    },
     "repositories":[
         {
             "type": "vcs",
@@ -31,13 +43,18 @@
     ],
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.4",
-        "rector/rector": "^0.5.8"
+        "rector/rector": "^0.6.10",
+        "phpunit/phpunit": "^8.5",
+        "fzaninotto/faker": "^1.9",
+        "php-coveralls/php-coveralls": "^2.2"
     },
     "scripts": {
-        "phpcs": ["./vendor/bin/phpcs --standard=PSR2 DevTools template application.php"],
-        "phpcbf": ["./vendor/bin/phpcbf --standard=PSR2 DevTools template application.php"],
+        "phpcs": ["./vendor/bin/phpcs --standard=PSR12 DevTools template exact-online-api-client-dev-tools"],
+        "phpcbf": ["./vendor/bin/phpcbf --standard=PSR12 DevTools template exact-online-api-client-dev-tools"],
         "phpstan": "./vendor/bin/phpstan analyse",
-        "build-entities": ["./exact-online-api-client-dev-tools build-entities --destination entities"]
+        "phpunit": "./vendor/bin/phpunit",
+        "build-entities": ["./exact-online-api-client-dev-tools build-entities --destination entities"],
+        "build-meta-data": ["./exact-online-api-client-dev-tools build-meta-file"]
     },
     "bin": [
         "exact-online-api-client-dev-tools"
