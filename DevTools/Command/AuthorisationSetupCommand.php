@@ -91,13 +91,13 @@ HELP
         $clientId = $this->questionHelper->ask(
             $this->input,
             $this->output,
-            new Question('What is the Client ID (Can be found in the Exact App Center)? ')
+            new Question('What is the Client ID (Can be found in the Exact App Center https://apps.exactonline.com)? ')
         );
 
         $clientSecret = $this->questionHelper->ask(
             $this->input,
             $this->output,
-            new Question('What is the Client secret (Can be found in the Exact App Center)? ')
+            new Question('What is the Client secret (Can also be found in the Exact App Center)? ')
         );
 
         return new OAuthClient($clientId, $clientSecret);
