@@ -1895,16 +1895,16 @@
         },
         {
             "name": "nette/robot-loader",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "d2a100e1f5cab390c78bc88709abbc91249c3993"
+                "reference": "38e8a270567a4ad9fe716b40fcda5a6580afa3c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/d2a100e1f5cab390c78bc88709abbc91249c3993",
-                "reference": "d2a100e1f5cab390c78bc88709abbc91249c3993",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/38e8a270567a4ad9fe716b40fcda5a6580afa3c0",
+                "reference": "38e8a270567a4ad9fe716b40fcda5a6580afa3c0",
                 "shasum": ""
             },
             "require": {
@@ -1932,8 +1932,8 @@
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "GPL-2.0-only",
+                "GPL-3.0-only"
             ],
             "authors": [
                 {
@@ -1954,7 +1954,7 @@
                 "nette",
                 "trait"
             ],
-            "time": "2019-12-26T22:32:02+00:00"
+            "time": "2020-02-20T22:17:50+00:00"
         },
         {
             "name": "nette/routing",
@@ -2195,26 +2195,30 @@
         },
         {
             "name": "ondram/ci-detector",
-            "version": "3.1.1",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OndraM/ci-detector.git",
-                "reference": "37a2ee68567d5abb92af20df5b93006f4565d904"
+                "reference": "5356952b4234a5b2123e4ac35075e69ac334ad39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OndraM/ci-detector/zipball/37a2ee68567d5abb92af20df5b93006f4565d904",
-                "reference": "37a2ee68567d5abb92af20df5b93006f4565d904",
+                "url": "https://api.github.com/repos/OndraM/ci-detector/zipball/5356952b4234a5b2123e4ac35075e69ac334ad39",
+                "reference": "5356952b4234a5b2123e4ac35075e69ac334ad39",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
             },
             "require-dev": {
+                "ergebnis/composer-normalize": "^2.2",
+                "jakub-onderka/php-parallel-lint": "^1.0",
                 "lmc/coding-standard": "^1.0",
-                "phpstan/phpstan-phpunit": "^0.11.2",
-                "phpstan/phpstan-shim": "^0.11.19",
-                "phpunit/phpunit": "^7.1 || ^8.0"
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpstan/extension-installer": "^1.0.3",
+                "phpstan/phpstan": "^0.12.0",
+                "phpstan/phpstan-phpunit": "^0.12.1",
+                "phpunit/phpunit": "^7.1 || ^8.0 || ^9.0"
             },
             "type": "library",
             "autoload": {
@@ -2239,16 +2243,18 @@
                 "adapter",
                 "appveyor",
                 "bamboo",
+                "buddy",
                 "continuous integration",
                 "continuousphp",
                 "drone",
+                "github",
                 "gitlab",
                 "interface",
                 "jenkins",
                 "teamcity",
                 "travis"
             ],
-            "time": "2019-11-10T23:14:15+00:00"
+            "time": "2020-02-18T14:48:31+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -3177,16 +3183,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "v0.7.0",
+            "version": "v0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "2114a7346271de9493a750e6cb04d1f5be310fc5"
+                "reference": "4493137ad6e50379dacc765b3ba367684aeac554"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/2114a7346271de9493a750e6cb04d1f5be310fc5",
-                "reference": "2114a7346271de9493a750e6cb04d1f5be310fc5",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/4493137ad6e50379dacc765b3ba367684aeac554",
+                "reference": "4493137ad6e50379dacc765b3ba367684aeac554",
                 "shasum": ""
             },
             "require": {
@@ -3201,7 +3207,7 @@
                 "ondram/ci-detector": "^3.1",
                 "php": "^7.2",
                 "phpstan/phpdoc-parser": "^0.4",
-                "phpstan/phpstan": "^0.12.10",
+                "phpstan/phpstan": "^0.12.11",
                 "phpstan/phpstan-phpunit": "^0.12",
                 "sebastian/diff": "^3.0|^4.0",
                 "symfony/console": "^4.4|^5.0",
@@ -3231,7 +3237,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.6-dev"
+                    "dev-master": "0.8-dev"
                 }
             },
             "autoload": {
@@ -3258,10 +3264,11 @@
                     "Rector\\MysqlToMysqli\\": "rules/mysql-to-mysqli/src",
                     "Rector\\NetteTesterToPHPUnit\\": "rules/nette-tester-to-phpunit/src",
                     "Rector\\NetteToSymfony\\": "rules/nette-to-symfony/src",
-                    "Rector\\Nette\\": "packages/nette/src",
+                    "Rector\\Nette\\": "rules/nette/src",
                     "Rector\\NodeCollector\\": "packages/node-collector/src",
                     "Rector\\NodeTypeResolver\\": "packages/node-type-resolver/src",
                     "Rector\\NodeNameResolver\\": "packages/node-name-resolver/src",
+                    "Rector\\Oxid\\": "rules/oxid/src",
                     "Rector\\PHPStan\\": "rules/phpstan/src",
                     "Rector\\PHPStanStaticTypeMapper\\": "packages/phpstan-static-type-mapper/src",
                     "Rector\\PHPUnitSymfony\\": "rules/phpunit-symfony/src",
@@ -3304,7 +3311,8 @@
                     "Rector\\DoctrineGedmoToKnplabs\\": "rules/doctrine-gedmo-to-knplabs/src",
                     "Rector\\MinimalScope\\": "rules/minimal-scope/src",
                     "Rector\\Polyfill\\": "packages/polyfill/src",
-                    "Rector\\CakePHPToSymfony\\": "rules/cakephp-to-symfony/src"
+                    "Rector\\CakePHPToSymfony\\": "rules/cakephp-to-symfony/src",
+                    "Rector\\JMS\\": "rules/jms/src"
                 },
                 "files": [
                     "src/functions/rector_dump_function.php"
@@ -3334,7 +3342,7 @@
                 "instant refactoring",
                 "instant upgrades"
             ],
-            "time": "2020-02-14T09:04:54+00:00"
+            "time": "2020-02-23T22:42:11+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -5010,16 +5018,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "d28ebdf7ab8d88f231310aef1e8cce965ea0b2ca"
+                "reference": "344c77293038173f49678d9a95c27da6cbdbccd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/d28ebdf7ab8d88f231310aef1e8cce965ea0b2ca",
-                "reference": "d28ebdf7ab8d88f231310aef1e8cce965ea0b2ca",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/344c77293038173f49678d9a95c27da6cbdbccd0",
+                "reference": "344c77293038173f49678d9a95c27da6cbdbccd0",
                 "shasum": ""
             },
             "require": {
@@ -5031,7 +5039,9 @@
                 "nette/di": "<3.0"
             },
             "require-dev": {
+                "latte/latte": "^2.5",
                 "nette/di": "^3.0",
+                "nette/mail": "^3.0",
                 "nette/tester": "^2.2",
                 "nette/utils": "^3.0",
                 "phpstan/phpstan": "^0.12",
@@ -5077,7 +5087,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2019-12-15T22:48:05+00:00"
+            "time": "2020-02-23T18:40:15+00:00"
         },
         {
             "name": "webmozart/assert",
