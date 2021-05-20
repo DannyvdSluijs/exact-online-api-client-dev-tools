@@ -46,7 +46,7 @@
         "rector/rector": "*",
         "phpunit/phpunit": "^8.5",
         "fzaninotto/faker": "^1.9",
-        "php-coveralls/php-coveralls": "^2.2"
+        "php-coveralls/php-coveralls": "^2.4"
     },
     "scripts": {
         "phpcs": ["./vendor/bin/phpcs --standard=PSR12 DevTools template exact-online-api-client-dev-tools"],
